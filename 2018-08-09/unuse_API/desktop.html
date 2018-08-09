@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="./desktop.css">
+	</head>
+	<body>
+		<script type="text/javascript">
+
+
+			var img_L = 0;
+			var img_T = 0;
+			var targetObj;
+
+			function getLeft(o){
+			     return parseInt(o.style.left.replace('px', ''));
+			}
+			function getTop(o){
+			     return parseInt(o.style.top.replace('px', ''));
+			}
+
+			// 이미지 움직이기
+			function moveDrag(e){
+			     var e_obj = window.event? window.event : e;
+			     var dmvx = parseInt(e_obj.clientX + img_L);
+			     var dmvy = parseInt(e_obj.clientY + img_T);
+			     targetObj.style.left = dmvx +"px";
+			     targetObj.style.top = dmvy +"px";
+			     return false;
+			}
+
+			// 드래그 시작
+			function startDrag(e, obj){
+			     targetObj = obj;
+			     var e_obj = window.event? window.event : e;
+			     img_L = getLeft(obj) - e_obj.clientX;
+			     img_T = getTop(obj) - e_obj.clientY;
+
+			     document.onmousemove = moveDrag;
+			     document.onmouseup = stopDrag;
+			     if(e_obj.preventDefault)e_obj.preventDefault();
+			}
+
+			// 드래그 멈추기
+			function stopDrag(){
+			     document.onmousemove = null;
+			     document.onmouseup = null;
+			}
+
+			//더블 클릭시
+			function dblclick_evt(e){
+				var img = document.createElement('img');
+				img.src = 'img/notes.png';
+				img.style = 'width:50px; position: absolute; left:0; top:0; margin:0; cursor:pointer; cursor:hand;';
+				document.body.appendChild(img);
+			}
+		</script>
+
+		<img src="img/folder.png" id="folder1" style="width:50px; position:absolute; left:0px; top:50px; cursor:pointer; cursor:hand" ondblclick="dblclick_evt()" onmousedown="startDrag(event, this)">
+		<img src="img/folder.png" id="folder2" style="width:50px; position:absolute; left:60px; top:50px; cursor:pointer; cursor:hand" ondblclick="dblclick_evt()" onmousedown="startDrag(event, this)">
+		<img src="img/squirtle.png" id="icon1" style="width:50px; position:absolute; left:120px; top:50px; cursor:pointer; cursor:hand" onmousedown="startDrag(event, this)">
+
+	</body>
+</html>

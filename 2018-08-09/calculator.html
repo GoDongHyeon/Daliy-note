@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<style>
+#output{
+  width:240px;
+  padding:10px;
+  background-color: #ffffff;
+  margin-bottom : 20px;
+  border: 1px solid #000000;
+}
+button{
+  width:50px;
+  height:50px;
+  margin:5px;
+  text-align: center;
+  background-color: gray;
+}
+</style>
+<body>
+<h2>계산기</h2>
+<div id="output">0</div>
+
+<div id="btn1">
+  <button id="7" onclick="clickevt(event)">7</button>
+  <button id="8" onclick="clickevt(event)">8</button>
+  <button id="9" onclick="clickevt(event)">9</button>
+  <button id="/" onclick="clickevt(event)">/</button>
+</div>
+
+<div id="btn2">
+  <button id="4" onclick="clickevt(event)">4</button>
+  <button id="5" onclick="clickevt(event)">5</button>
+  <button id="6" onclick="clickevt(event)">6</button>
+  <button id="*" onclick="clickevt(event)">*</button>
+</div>
+
+<div id="btn3">
+  <button id="1" onclick="clickevt(event)">1</button>
+  <button id="2" onclick="clickevt(event)">2</button>
+  <button id="3" onclick="clickevt(event)">3</button>
+  <button id="-" onclick="clickevt(event)">-</button>
+</div>
+
+<div id="btn4">
+  <button id="c" onclick="clickevt(event)">c</button>
+  <button id="0" onclick="clickevt(event)">0</button>
+  <button id="+" onclick="clickevt(event)">+</button>
+  <button id="=" onclick="result_num(event)">=</button>
+</div>
+
+<script>
+  var input = {'array': []};
+
+  input.getInput = function(){
+    return this.array.join("");
+  }
+
+  input.removeAll = function(str){
+    this.array = [];
+  }
+
+  input.empty = function(){
+    return this.array.length === 0;
+  }
+
+  input.getValue = function(){
+    var str = this.array.shift();
+    var n = Number(str);
+    return n;
+  }
+
+  input.getOperator = function(){
+    var op = this.array.shift();
+    if(op === "+" ||op === "/" ||op === "-" ||op === "*"){
+      return op;
+    } else {
+      return "$";
+    }
+}
+
+
+//출력
+  var output = {};
+  output.text = document.getElementById('output');
+
+  var clickevt = function(event){
+  var str = event.target.innerHTML;
+
+    switch(str){
+      case 'c':
+        input.array.pop(str);
+        break;
+      case '/':
+      case '*':
+      case '-':
+      case '+':
+        input.array.push(" " + str +" ");
+        break;
+      default:
+        input.array.push(str);
+        break;
+    }
+
+    //숫자가 없을때 'c'를 클릭시 '0' 으로 유지
+    if(input.array.length === 0){
+      output.text.innerHTML = "0";
+    }else{
+      output.text.innerHTML = input.getInput();
+    }
+
+    console.log(event.target.innerHTML);
+  }
+</script>
+
+</body>
+</html>
