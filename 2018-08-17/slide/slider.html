@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<link rel='stylesheet' href='slider.css'>
+<body>
+
+<!-- contents -->
+<div class='slideWrap'>
+  <a href="https://unsplash.com/search/photos/computer">
+    <img src='img/1.jpg' name='slideshow' class='slideshow fade'>
+  </a>
+  <!-- function -->
+  <div class='prevNext'>
+    <a onclick='chgimg(-1);auto(1)' class='prev'>&#10094;</a>
+    <a onclick='chgimg(1);auto(1)' class='next'>&#10095;</a>
+  </div>
+</div>
+
+<br>
+<!-- dots -->
+<div class='dotWrap' >
+  <span class='dot active' onclick='index(1)'></span>
+  <span class='dot' onclick='index(2)'></span>
+  <span class='dot' onclick='index(3)'></span>
+  <span class='dot' onclick='index(4)'></span>
+</div>
+  <div onclick='auto()' class='auto_stop'>
+    <button name="AuStBtn" class='AuStBtn'>Stop</button>
+  </div>
+</body>
+
+<script src='slider.js'></script>
+</html>
