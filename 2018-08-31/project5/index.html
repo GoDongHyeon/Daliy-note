@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>a</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div>
+    <header id="welcome-section">
+      <div id="nav-wrap">
+        <ul id="navbar">
+          <li><a href="#intro-1"><strong>About</strong></a></li>
+          <li><a href="#intro-2"><strong>Works</strong></a></li>
+          <li><a href="#intro-3"><strong>Contact</strong></a></li>
+        </ul>
+      </div>
+    </header>
+  </div>
+
+  <div class="intro" id="intro-1">
+    <h1 id="wel-h1">Go Dong</h1>
+    <h2 id="wel-h2">Welcome</h2>
+    <h3 id="wel-h3">My site</h3>
+  </div>
+
+  <div class="intro" id="intro-2">
+    <div id="works-wrap">
+      <div id="works-top">
+        <div id="top-btn-wrap">
+          <div id="red-btn"></div><div id="yello-btn"></div><div id="green-btn"></div>
+        </div>
+      </div>
+
+      <div id="works-menu">
+        <div class="work-menu">메일</div>
+        <div class="work-menu">이미지</div>
+        <div class="work-menu" id="circle">S</div>
+      </div>
+      <div id="profile-link">
+        <div class="works">
+          <a href="https://codepen.io/anon/pen/dqpYae">
+            <img class="works-img" src="https://cloud.githubusercontent.com/assets/15967809/17642794/d084d718-6171-11e6-83fa-ede5d0a67ad2.png" />
+          </a>
+          Project1
+        </div>
+        <div class="works"><a href="https://codepen.io/anon/pen/jvMWay?editors=1100"><img class="works-img" src="https://cloud.githubusercontent.com/assets/15967809/17642771/7cd6a0c4-6171-11e6-87fb-915f6084d104.png"></a>Project2</div>
+        <div class="works"><a href="https://codepen.io/anon/pen/jvVyXj?editors=1100"><img class="works-img" src="https://cloud.githubusercontent.com/assets/15967809/17642772/7d02406c-6171-11e6-8c79-40a2933163dc.png"></a>Project3</div>
+
+        <div class="works"><a href="https://codepen.io/anon/pen/VGmppB?editors=1100"><img class="works-img" src="https://cloud.githubusercontent.com/assets/15967809/17642773/7d08cb94-6171-11e6-8c45-22e7cf64683e.png"></a>Project4</div>
+      </div>
+  </div>
+
+  <div class="intro" id="intro-3">
+    <form id="contact-form">
+      <div class="contact-div-l" style="grid-area: title;">Catch Me If You Can</div>
+
+      <div class="contact-div-l" style="grid-area: sect1;">Name</div>
+      <div class="contact-div-r" style="grid-area: text1;"><input type="text" class="cont-text" placeholder="Enter your Name" required></div>
+
+      <div class="contact-div-l" style="grid-area: sect2;">Email</div>
+      <div class="contact-div-r" style="grid-area: text2;"><input type="text" class="cont-text" placeholder="Enter your Email" required></div>
+
+      <div class="contact-div-l" style="grid-area: sect3;">Phone</div>
+      <div class="contact-div-r" style="grid-area: text3;"><input type="text" class="cont-text" placeholder="Enter your Phone number" min="0" max="9" required></div>
+
+      <div class="contact-div-l" style="grid-area: sect4;">Contact</div>
+      <div class="contact-div-r" id="cont-textarea" style="grid-area: text4;"><textarea class="cont-textarea" placeholder="없다면 '없음'을 써주시길 바랍니다." required></textarea></div>
+
+      <div class="contact-div-l" style="grid-area: submit;"><input  id="submit-btn" type="submit" value="S U B M I T"></div>
+    </form>
+  </div>
+</body>
+</html>

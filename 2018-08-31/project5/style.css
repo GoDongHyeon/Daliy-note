@@ -1,0 +1,250 @@
+html, body {
+  margin:0;
+  padding:0;
+  width: 100%;
+  height: 100%;
+}
+
+#welcome-section {
+  background:linear-gradient(-135deg, #E4A972, #9941D8);
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+#nav-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+#navbar {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+#navbar > li {
+  margin-right:40px;
+}
+#navbar > li > a{
+  color: white;
+  text-decoration: none;
+}
+
+.intro {
+  width: 100%;
+  height: 100%;
+}
+
+#intro-1 {
+  background: linear-gradient(-45deg, rgba(246, 255, 0, .8), rgba(255, 0, 161, .8)) fixed, url(https://images.unsplash.com/photo-1535535340673-addddf9dd35b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=80594969b9ef66eca2e74140cccf4fc6&auto=format&fit=crop&w=2249&q=80) fixed;
+  background-size: cover;
+}
+#wel-h1, #wel-h2, #wel-h3 {
+  text-align: center;
+  position: relative;
+  top:200px;
+}
+
+
+/* intro-2 css */
+#works-wrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+#works-top {
+  border:0.5px solid #dbdbdb;
+  width:100%;
+  height:26px;
+  border-radius: 1px;
+  background-color: #F2F2F2;
+}
+
+#top-btn-wrap {
+  height: 100%;
+  width:60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#red-btn {
+  border:0.5px solid #DF473E;
+  margin-left: 7px;
+  width:11px;
+  height:11px;
+  background-color: #FF6058;
+  border-radius: 50%;
+}
+#yello-btn {
+  border:0.5px solid #DF9C1B;
+  margin-left: 7px;
+  width:11px;
+  height:11px;
+  background-color: #FFC430;
+  border-radius: 50%;
+}
+#green-btn {
+  border:0.5px solid #28AA2D;
+  margin-left: 7px;
+  width:11px;
+  height:11px;
+  background-color: #28CE42;
+  border-radius: 50%;
+}
+
+#works-menu {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+}
+.work-menu {
+  margin-right:20px;
+}
+#circle {
+  border:0.5px solid #28AA2D;
+  width:30px;
+  height:30px;
+  background-color: #28AA2D;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#works-title {
+  width: 100%;
+  height: 231px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size:60px;
+  font-weight: bold;
+}
+
+#profile-link {
+  height: 320px;
+  width: 542px;
+  margin:0 auto;
+  margin-top: 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+.works {
+  border:1px solid #a1a1a1;
+  border-radius: 20px;
+  overflow: visible;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.works-img {
+  max-width: 100%;
+  max-height: 100%;
+  background-size: cover;
+border-radius: 3px;
+}
+
+/* intro-3 css */
+#intro-3 {
+  background: linear-gradient(205deg, #f2cee9, #fbf9ec, #bbe3ec) fixed;
+  display: flex;
+  align-items: center;
+}
+#contact-form {
+  width: 80%;
+  height: 70%;
+  margin:0 auto;
+  border:1px solid #b1b1b1;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    "title title title title"
+    "sect1 text1 sect2 text2"
+    "sect3 text3 text3 ."
+    "sect4 text4 text4 text4"
+    "sect4 text4 text4 text4"
+    "submit submit submit submit"
+}
+.contact-div-l {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-div-r {
+  display: flex;
+  align-items: center;
+}
+.cont-text {
+  width: 80%;
+  height: 28px;
+}
+.cont-textarea {
+  width:80%;
+  height:50%;
+}
+#submit-btn {
+  width: 120px;
+  height: 35px;
+}
+
+
+@media (max-width: 550px) {
+  #welcome-section {
+    min-width: 550px;
+  }
+  #nav-wrap {
+    justify-content: space-around;
+  }
+  #navbar {
+    width: 180px;
+  }
+  #navbar > li {
+    margin-right:20px;
+  }
+
+  #wel-h1, #wel-h2, #wel-h3 {
+    top:100px;
+  }
+
+  /* intro-2 css */
+
+  #profile-link {
+    width: 348px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  /* intro-3 css */
+
+  #contact-form {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas:
+      "title title title"
+      "sect1 text1 text1"
+      "sect2 text2 text2"
+      "sect3 text3 text3"
+      "sect4 . ."
+      "text4 text4 text4"
+      "text4 text4 text4"
+      "submit submit submit"
+  }
+
+  #cont-textarea {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
