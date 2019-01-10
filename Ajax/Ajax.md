@@ -1,8 +1,6 @@
 # Ajax
 
 
-
-[출처](https://ko.wikipedia.org/wiki/Ajax)
 ## Ajax 란?
 
 - AJAX (Asynchronous JavaScript And XML)
@@ -40,3 +38,7 @@
 
 
 출처의 내용을 거의 그대로 요약했다..
+
+
+
+[출처](https://ko.wikipedia.org/wiki/Ajax)
