@@ -1,5 +1,11 @@
 # Node Js basic
 
+
+## Query String
+*http://* (protocol) *abc.com/topic* (path) *?id=1*(query string)
+
+
+
 ## NodeJs + Express
 
 1. 기본적으로 NodeJs + Express 사용하기 위해 express 를 require 한다.
