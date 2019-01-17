@@ -20,3 +20,10 @@ $('button').on('click', (e) => {
   }, 2000)
 })
 ```
+
+- modifying timeout
+```cpp
+cy.get('.mobile-nav', { timeout: 10000 })
+  .should('be.visible')
+  .and('contain', 'Home')
+```
