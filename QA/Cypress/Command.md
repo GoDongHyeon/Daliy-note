@@ -2,7 +2,7 @@
 
 *commands*
 
-as() : get() or wati() 의 ele에 이름을 정해주고, @로 불러와 사용할 수 있다.
+as() : get() or wati() 의 ele에 이름을 정해주고, @ 로 불러와 사용할 수 있다.
 
 and() : should() 에 이어서 확인할 내용을 담음
 
@@ -24,3 +24,5 @@ cy.get(‘.list’).within(($list) => {})
 ```
 
 hash() : 새로 로딩된 페이지의 url을 가져옴
+
+clear() : input 에 있는 값을 지운다. 
