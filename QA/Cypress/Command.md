@@ -19,10 +19,13 @@ find() : Elements의 tagName을 찾음 (div, footer, nav 등등)
 eq(num) : num 번째에 있는 Elements를 선택
 
 within() : 요소 내의 Elements를 찾을 수 있음.
+          영역 내 범위를 정하고 그 안에서 요소를 찾을 수 있다.
+          현재 cypress 테스트 코드를 작성중에 만나는 문제를 해결하기 좋은 함수라고 생각하고,
+          적용시킬 예정이다.
 ```cpp
 cy.get(‘.list’).within(($list) => {})
 ```
 
 hash() : 새로 로딩된 페이지의 url을 가져옴
 
-clear() : input 에 있는 값을 지운다. 
+clear() : input 에 있는 값을 지운다.
