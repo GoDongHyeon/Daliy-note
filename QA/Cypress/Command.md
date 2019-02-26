@@ -11,6 +11,13 @@ Invoke() : function 또는 func 의 값을 가짐
 trigger(eventName) : event on link
 
 each(() => {}) : 선택한 Elements 의 작업을 반복한다.
+```cpp
+each($el, index, $list){}
+```
+위와 같이 $el, index, $list 가 무엇인지 글쓴이 본인이 정확하게 확인하고 싶었다.
+  $el: 현재 each()에서 선택하고 있는 element를 의미한다.
+  index: 몇번째 element인지 0~ 숫자로 표시
+  $list: get() 으로 선택한 elements의 리스트를 가지고 있다.
 
 filter(조건) : 조건에 합당한 Elements 만 통과시킨다.
 
