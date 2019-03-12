@@ -37,6 +37,22 @@ models.Foo.findAll({
 만약 구간을 검색할 경우 between 을 사용한다.
 
 
+### includes
+```cpp
+var test = ['cat', 'bat', 'ant'];
+
+console.log(test.includes('at'));
+```
+결과는 false이다. 하지만,
+
+```cpp
+var test = ['cat', 'bat', 'ant'];
+
+console.log(test[0].includes('at'));
+```
+의 결과는 true이다.. 라는걸 이제 알았다.
+
+
 ### join
 
 ```cpp
