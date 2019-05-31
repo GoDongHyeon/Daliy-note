@@ -25,7 +25,7 @@
 ## useEffect
 - componentDidMount, componentDidUpdate, componentWillUnMount가 하나로 통합된 API
 
-```
+```cpp
 function Example() {
   const [count, setCount] = useState(0);
 
@@ -43,3 +43,27 @@ function Example() {
   );
 }
 ```
+
+## Custom Hook
+- 이름이 "use"로 시작하고, 안에서 다른 Hook을 호출한다면 그 함수를 custom hook이라고 부른다.
+- useSomething이라는 네이밍 컨벤션은 linter 플러그인이 hook을 인식하고 버그를 찾을 수 있도록 해줌
+
+
+## 그외 hook
+
+> useContext
+  - 컴포넌트를 중첩하지 않고 React Context를 구독할 수 있음.
+ ```cpp
+   function Example() {
+     const locale = useContext(LocaleContext);
+     const theme = useContext(ThemeContext);
+   }
+ ```
+
+> useReducer
+  - 복잡한 컴포넌트들의 state를 reducer로 관리할 수 있게 해줌
+  ```cpp
+  function Todos() {
+    const [todos, dispatch] = useREducer(todosReducer);
+  }
+  ```
