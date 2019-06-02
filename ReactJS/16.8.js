@@ -24,6 +24,7 @@
 
 ## useEffect
 - componentDidMount, componentDidUpdate, componentWillUnMount가 하나로 통합된 API
+- useEffect는 componentDidUpdate 역할을 가지고 있어, state를 변경시 useEffect가 실행된다.
 
 ```cpp
 function Example() {
@@ -47,6 +48,27 @@ function Example() {
 ## Custom Hook
 - 이름이 "use"로 시작하고, 안에서 다른 Hook을 호출한다면 그 함수를 custom hook이라고 부른다.
 - useSomething이라는 네이밍 컨벤션은 linter 플러그인이 hook을 인식하고 버그를 찾을 수 있도록 해줌
+
+예)
+```cpp
+  function Form() {
+    // 1. name이라는 state 변수 사용
+    const [name, setName] = useState('Mary');
+
+    // 2. Effect를 사용해 폼데이터를 저장
+    useEffect(function persistForm() {
+      localStorage.setItem('formData', name);
+    });
+
+    // 3. surname이라는 state 변수 사용
+    const [surname, setSurname] = useState('Poppins');
+
+    // 4. Effect를 사용해서 제목을 업데이트
+    useEffect(function updateTitle() {
+      document.title = name + ' ' + surname;
+    });
+  }
+```
 
 
 ## 그외 hook
