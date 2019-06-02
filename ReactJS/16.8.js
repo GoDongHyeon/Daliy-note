@@ -48,6 +48,7 @@ function Example() {
 ## Custom Hook
 - 이름이 "use"로 시작하고, 안에서 다른 Hook을 호출한다면 그 함수를 custom hook이라고 부른다.
 - useSomething이라는 네이밍 컨벤션은 linter 플러그인이 hook을 인식하고 버그를 찾을 수 있도록 해줌
+- 네이밍은 반드시 'use'를 사용하도록 한다.
 
 예)
 ```cpp
@@ -89,3 +90,22 @@ function Example() {
     const [todos, dispatch] = useREducer(todosReducer);
   }
   ```
+
+> useRef
+- .current 프로퍼티로 전달된 인자(initialValue)로 초기화된 변경 가능한 ref 객체를 반환.
+
+```cpp
+function TextInputWithFocusButton() {
+  const inputEl = useRef(null);
+  const onButtonClick = () => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <input ref={inputEl} type="text" />
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  );
+}
+```
