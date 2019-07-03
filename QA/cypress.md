@@ -44,4 +44,22 @@ UI 테스트 중에서
 +. 버그 발생시, 혹은 예상되는 버그에 대한 테스트 작성 (똑같은 실수를 하지 않기 위해서)
 +. i18n 확인 코드 작성
 
-어디까지나 객관적이고 특성에 따라 가지게된 프로세스이다.
+어디까지나 객관적이고 회사 혹은 작성자 특성에 따라 가지게된 프로세스이다.
+
+
+## CircleCi & Local Test
+---
+Cypress 테스트를 할 때  
+
+(1) cypress open (로컬 - no headless)
+(2) cypress run    (로컬 - headless)
+(3) cypress run    (CircleCi - headless)
+
+cypress는 "open" 과 "run" 두 가지 방법으로 테스트를 실행한다. (3.은 2.와 환경이 다름)
+
+테스트를 해보면 (1) 방식의 테스트와 (2), (3)의 테스트 실행 결과가 다를 때가 많다.
+그래서 (3) CircleCi로 결과를 확인하기 보단, 로컬에서 (2)로 한번 더 테스트 돌려보시는 것을 권장한다.
+  (2)와 (3)는 테스트 환경이 다르다보니 역시 테스트 결과가 다를 때가 많았다.
+
+Reference
+- [Headless(wait time)](https://www.notion.so/ab180/Cypress-Guideline-39d26b9660d549279363d9ddddd13ca2#08ac0b633b3e406b975075eea6582e38)
