@@ -63,3 +63,34 @@ cypress는 "open" 과 "run" 두 가지 방법으로 테스트를 실행한다. (
 
 Reference
 - [Headless(wait time)](https://www.notion.so/ab180/Cypress-Guideline-39d26b9660d549279363d9ddddd13ca2#08ac0b633b3e406b975075eea6582e38)
+
+
+## Test Structure
+---
+EX)
+```cpp
+  // describe() = context()
+  // it() = specity()
+  describe('test math functions', () => {
+  	context('math', () => {
+  		it('can add numbers', () => {
+  			expect(add(1, 2)).to.eq(3)
+  		})
+  		specify('can divide numbers', () => {
+  			expect(divide(27, 9)).to.eq(3)
+  		})		
+  	})
+  })
+```
+
+cypress에서는 테스트 구분 메소드가 describe()와 it() 외에 context()와 specify()가 있다.
+context()는 describe()와 같고, specify()는 it()과 같다. (기능에는 차이가 없는 것으로 알고 있음)
+
+그래서 context()와 specify()를 사용하는 때를 다음과 같이 하면 좋을 것 같다.
+
+- describe() 안에 describe()를 사용해야 하는 경우 ⇒ 자식 describe() 대신 context()를 사용
+- 예외 상황(혹은 버그) 테스트인 경우 ⇒ it() 대신 specify()를 사용
+
+EX는 Reference에 나와 있는 예시를 썼으며, 문서에 나와 있는 add(), divide()는 굳이 쓰진 않았습니다.
+
+Reference ([https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Test-Structure](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Test-Structure))
