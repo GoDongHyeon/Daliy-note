@@ -91,6 +91,35 @@ context()는 describe()와 같고, specify()는 it()과 같다. (기능에는 �
 - describe() 안에 describe()를 사용해야 하는 경우 ⇒ 자식 describe() 대신 context()를 사용
 - 예외 상황(혹은 버그) 테스트인 경우 ⇒ it() 대신 specify()를 사용
 
-EX는 Reference에 나와 있는 예시를 썼으며, 문서에 나와 있는 add(), divide()는 굳이 쓰진 않았습니다.
+EX는 Reference에 나와 있는 예시를 썼으며, 문서에 나와 있는 add(), divide()는 굳이 쓰진 않았다.
 
 Reference ([https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Test-Structure](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests.html#Test-Structure))
+
+
+## Selector
+---
+
+cypress를 처음 시작해보면 특정 요소를 get하기 위해서 흔히 id, class, tag, attributes, nth-child를 사용하는 경우가 많다.
+이러한 get 방식이 나쁜 것은 아니지만, cypress에서 말하듯 data-cy, data-test, data-testid를 사용하는 것을 권장한다.
+왜냐하면, 아래와 같이 Element에 직접 data-* 를 넣어주는 작업이 필요하지만, 나중에 selecting이 훨씬 간결하고 유지 보수가 적게 든다.
+
+```cpp
+    <button id="main" class="btn btn-large" data-cy="submit">
+    	Submit
+    </button>
+```
+물론 배포시에 data-* 가 보이면 이쁘지 않기 때문에 지워주기로 한다.(링크 참고)
+[배포시 참고](https://www.npmjs.com/package/babel-plugin-react-remove-properties)
+
+> tip. data-cy는 컴포넌트 elements에 넣을 수 없다.
+
+```cpp
+  import Button from 'components/button'; // 버튼 컴포넌트
+
+  <Button
+  	data-cy='btn-select'
+  />
+```
+말 그대로 컴포넌트에 data-cy를 넣어도 Selecting 되지 않을 뿐더러 attribution으로 적용되지 않는다.
+
+Reference ([https://docs.cypress.io/api/cypress-api/selector-playground-api.html#Arguments](https://docs.cypress.io/api/cypress-api/selector-playground-api.html#Arguments))
