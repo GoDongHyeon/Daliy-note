@@ -128,7 +128,7 @@ Reference ([https://docs.cypress.io/api/cypress-api/selector-playground-api.html
 ## Unnecessary-Waiting
 ---
 
-대부분의 프로덕트는 api를 불러오는 시간이 많이 필요할 때가 많습니다. 예를 들면,  visit() 후 api를 불러올 wait time을 줘야하는 경우가 있습니다
+대부분의 프로덕트는 api를 불러오는 시간이 많이 필요할 때가 많다. 예를 들면,  visit() 후 api를 불러올 wait time을 줘야하는 경우가 있다
 
 > request() 불필요한 wait()
 
@@ -136,7 +136,7 @@ Reference ([https://docs.cypress.io/api/cypress-api/selector-playground-api.html
 cy.request('https://localhost:8080/user-site/');
 cy.wait(5000);
 ```
-request()는 서버가 응답 할 때까지 다음 명령이 실행되지 않기 때문에 wait()을 쓸 필요가 없습니다. 이미 응답이 끝난 후 5초를 더 기다리게 됩니다.
+request()는 서버가 응답 할 때까지 다음 명령이 실행되지 않기 때문에 wait()을 쓸 필요가 없다. 이미 응답이 끝난 후 5초를 더 기다리게 된다.
 
 
 > visit() 불필요한 wait()
@@ -145,7 +145,7 @@ request()는 서버가 응답 할 때까지 다음 명령이 실행되지 않기
 cy.visit('http://localhost/8080');
 cy.wait(5000);
 ```
-visit() 또한 *load* 가 될 때까지 기다렸다가 다음 명령이 실행되기 때문에 역시 wait()을 쓸 필요가 없습니다.
+visit() 또한 *load* 가 될 때까지 기다렸다가 다음 명령이 실행되기 때문에 역시 wait()을 쓸 필요가 없다.
 
 
 **이를 해결하기 위한 방법 예시**
@@ -157,6 +157,75 @@ cy.server()
   .wait('@getUsers')  // <--- wait explicitly for this route to finish
   .get('table tr').should('have.length', 2)
 ```
-기다려야 하는 이벤트에 이름을 주고, 그 이름을 wait('@Name') 이와 같이 사용해 이벤트가 끝날 때까지 기다리는 방법이 있습니다. (* route() 를 썼을 경우만 해당)
+기다려야 하는 이벤트에 이름을 주고, 그 이름을 wait('@Name') 이와 같이 사용해 이벤트가 끝날 때까지 기다리는 방법이 있다. (* route() 를 썼을 경우만 해당)
 
 Reference ([https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting))
+
+
+## cy.wrap()
+
+### (**TypeError: selector.split is not a function**) 에러 참고
+---
+
+wrap()과 get()의 다른점은 객체가된 Element를 선택할 수 있는가의 차이.
+get()으로 element를 선택할 때는
+
+```cpp
+cy.get('div.test_div');
+```
+위와 같이 선택하지만, cy.wrap()은
+
+```cpp
+cy.get('div.test_div')
+	.each(($el, index, list) => {
+		cy.wrap($el); // get($el)으로는 element를 잡을 수가 없다
+  );
+```
+or
+```cpp
+    cy.get('div.test_div')
+    	.then(($t_div) => { // then에서 $t_div 라고 이름을 정해주었을 때
+    		cy.wrap($t_div); // get($t_div)으로는 element를 선택할 수가 없다
+    	);
+```
+위의 경우 wrap()을 사용합니다. 이를 get()으로 selecting하려 할 시,
+
+**TypeError: selector.split is not a function**
+
+이와 같은 에러 메세지가 뜬다.(위 메세지가 떴을 때 한번쯤 get()과 wrap()을 의심해보자)
+
+
+## Headless 테스트 (circleCi, 로컬 - yarn cypress run)
+
+---
+
+> Render 시간이 짧을 시 기능 누락
+
+테스트 중 일부 기능이 제 역할을 하지 못하는 경우가 있는데,
+
+예로, circleCi로 테스트할 시(or 로컬에서 yarn cypress:run) view의 렌더가 끝나도, API들이 모두 렌더되지 않는 경우가 있다.
+
+예)
+테스트 할 때, 서버에서 데이터를 불러오는 Dropdown을 클릭해도 list가 나오지 않는 경우가 있는데,
+처음 페이지를 렌더할 때 wait()을 1~2초 정도 넣으니 문제 없이 테스트가 성공되는 경우가 있다.
+(이 경우 server().route()로 해결)
+
+
+## Cypress 지원 예정
+---
+
+아래 내용은 현재 Cypress에서 개발 혹은 지원 에정인 기술에 대한 글이다.
+
+- Browser 제한
+    Firefox, Edge, IE11 까지 지원하는 개발을 진행 중이다.
+    더불어 모바일 테스트 개발도 이루어 지고 있는 것 같다.
+
+    Reference ([https://github.com/cypress-io/cypress/issues/310](https://github.com/cypress-io/cypress/issues/310))
+
+- Action을 통한 테스트
+
+    Reference ([https://www.cypress.io/blog/2018/11/14/testing-redux-store](https://www.cypress.io/blog/2018/11/14/testing-redux-store))
+
+- Copy / Paste 기능 feature
+    input 혹은 textarea를 사용하는 경우, 기존 데이터를 건드리지 않으며 테스트를 하기 위해서는 copy/paste 기능이 필요하다고 생각한다
+    현재 Cypress에서는 이 기능을 feature 작업 중
