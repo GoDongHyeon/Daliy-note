@@ -123,3 +123,40 @@ cypress를 처음 시작해보면 특정 요소를 get하기 위해서 흔히 id
 말 그대로 컴포넌트에 data-cy를 넣어도 Selecting 되지 않을 뿐더러 attribution으로 적용되지 않는다.
 
 Reference ([https://docs.cypress.io/api/cypress-api/selector-playground-api.html#Arguments](https://docs.cypress.io/api/cypress-api/selector-playground-api.html#Arguments))
+
+
+## Unnecessary-Waiting
+---
+
+대부분의 프로덕트는 api를 불러오는 시간이 많이 필요할 때가 많습니다. 예를 들면,  visit() 후 api를 불러올 wait time을 줘야하는 경우가 있습니다
+
+> request() 불필요한 wait()
+
+```cpp
+cy.request('https://localhost:8080/user-site/');
+cy.wait(5000);
+```
+request()는 서버가 응답 할 때까지 다음 명령이 실행되지 않기 때문에 wait()을 쓸 필요가 없습니다. 이미 응답이 끝난 후 5초를 더 기다리게 됩니다.
+
+
+> visit() 불필요한 wait()
+
+```cpp
+cy.visit('http://localhost/8080');
+cy.wait(5000);
+```
+visit() 또한 *load* 가 될 때까지 기다렸다가 다음 명령이 실행되기 때문에 역시 wait()을 쓸 필요가 없습니다.
+
+
+**이를 해결하기 위한 방법 예시**
+```cpp
+cy.server()
+  .route('GET', /users/, [{ 'name': 'Maggy' }, { 'name': 'Joan' }])
+  .as('getUsers')
+  .get('#fetch').click()
+  .wait('@getUsers')  // <--- wait explicitly for this route to finish
+  .get('table tr').should('have.length', 2)
+```
+기다려야 하는 이벤트에 이름을 주고, 그 이름을 wait('@Name') 이와 같이 사용해 이벤트가 끝날 때까지 기다리는 방법이 있습니다. (* route() 를 썼을 경우만 해당)
+
+Reference ([https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting))
